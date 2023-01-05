@@ -1,17 +1,9 @@
 "use strict";
-const { Model, Validator } = require("sequelize");
+const { Validator } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  User.init(
+  const User = sequelize.define(
+    "User",
     {
       username: {
         type: DataTypes.STRING,
@@ -29,15 +21,21 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 256],
+          len: [8, 256],
         },
       },
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
         validate: {
-          len: [60, 60],
+          len: [6, 60],
         },
+      },
+      pfp: {
+        type: DataTypes.STRING,
+      },
+      bio: {
+        type: DataTypes.TEXT,
       },
     },
     {
@@ -54,11 +52,55 @@ module.exports = (sequelize, DataTypes) => {
           attributes: {},
         },
       },
-    },
-    {
-      sequelize,
-      modelName: "User",
     }
   );
+
+  User.prototype.toSafeObject = function () {
+    // remember, this cannot be an arrow function
+    const { id, username, email, pfp, bio } = this; // context will be the User instance
+    return { id, username, email, pfp, bio };
+  };
+
+  User.prototype.validatePassword = function (password) {
+    return bcrypt.compareSync(password, this.hashedPassword.toString());
+  };
+
+  const bcrypt = require("bcryptjs");
+
+  User.getCurrentUserById = async function (id) {
+    return await User.scope("currentUser").findByPk(id);
+  };
+
+  User.login = async function ({ credential, password }) {
+    const { Op } = require("sequelize");
+    const user = await User.scope("loginUser").findOne({
+      where: {
+        [Op.or]: {
+          username: credential,
+          email: credential,
+        },
+      },
+    });
+    if (user && user.validatePassword(password)) {
+      return await User.scope("currentUser").findByPk(user.id);
+    }
+  };
+
+  User.signup = async function ({ username, email, password, pfp, bio }) {
+    const hashedPassword = bcrypt.hashSync(password);
+    const user = await User.create({
+      username,
+      email,
+      hashedPassword,
+      pfp,
+      bio
+    });
+    return await User.scope("currentUser").findByPk(user.id);
+  };
+
+  User.associate = function (models) {
+    // associations can be defined here
+  };
+
   return User;
 };

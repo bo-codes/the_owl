@@ -22,6 +22,12 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      pfp: {
+        type: Sequelize.STRING,
+      },
+      bio: {
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
