@@ -1,0 +1,12 @@
+// we are setting up sequelize to look in the databases.js file for its db configurations
+const path = require("path");
+
+module.exports = {
+    config: path.resolve("config", "database.js"),
+    "models-path": path.resolve("db", "models"),
+    "seeders-path": path.resolve("db", "seeders"),
+    "migrations-path": path.resolve("db", "migrations"),
+};
+
+// once you make the .sequelizerc file, setting up the paths to the db,
+// you initialize sequelize to the db folder by running: npx sequelize init

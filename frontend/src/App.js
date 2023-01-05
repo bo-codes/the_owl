@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Users from "./components/Users";
+import Profile from "./components/Profile";
+import HomePage from "./components/HomePage/Homepage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        {/* <NavLink exact to="/">
+          Home
+        </NavLink>
+        <NavLink exact to="/users">
+          Users
+        </NavLink> */}
+
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/users">
+            <Users />
+          </Route>
+          <Route path="/users:userId">
+            <Profile />
+          </Route>
+          <Route>
+            <h1>404: wrong page goofy</h1>
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
