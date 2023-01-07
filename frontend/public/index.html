@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- 1. The client/browser sends a request to a server where our files are stored for our project files -->
+    <!-- 2. The server sends the index.html file in return -->
+    <!-- 3. The browser loads the index.html file up which mostly just contains script and link tags which tells the browser to fetch some additional js files from the server  -->
+    <!-- 4. The browser makes a second request to the server for the bundle.js file (actually looks like 2314jkl323hl32h4klj32.js), and the server sends it as a response -->
+    <!-- 5. The browser loads up the bundle.js file it just received and show it in the root div show below -->
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,20 +29,11 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>elis th0ughts</title>
+    <title>The Owl</title>
   </head>
   <body style="margin: 0px;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- This is the root div where the js file that creates all of the html through jsx compilation will run and render our entire app as html -->
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
