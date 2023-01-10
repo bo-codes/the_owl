@@ -9,6 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <div>
+        {/* specific navlink component for organization */}
         {/* <NavLink exact to="/">
           Home
         </NavLink>
