@@ -19,13 +19,6 @@ function AboutPage() {
     },
   ];
 
-  const collapserExpander = (items, expandedIndex) => {
-    return items.map((item, index) => {
-      if (index === expandedIndex) return "Expanded"
-      else return "Collapsed"
-    })
-  }
-
   return (
     <div>
       <Accordion items={items}/>

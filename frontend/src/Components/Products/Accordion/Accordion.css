@@ -1,0 +1,23 @@
+.accordion {
+  font-size: 14px;
+  width: 60vh;
+}
+
+.accordion-label {
+  display: flex;
+  padding-left: 4vh;
+  align-items: center;
+  /* border: .4px solid white; */
+  background-color: rgb(29, 29, 29);
+  border-bottom: 1px solid black;
+  padding: 2vh;
+}
+
+.accordion-label:hover {
+  cursor: pointer;
+}
+
+.accordion-content {
+  background-color: rgb(58, 58, 58);
+  padding: 2vh;
+}
