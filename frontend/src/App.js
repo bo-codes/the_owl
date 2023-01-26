@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Users from "./components/Users";
-import Profile from "./components/Profile";
-import HomePage from "./components/HomePage/Homepage";
+import Users from "./Components/Products/Users";
+import Profile from "./Components/Products/Profile";
+import HomePage from "./Pages/HomePage/Homepage";
 
 // CREATE THIS FILE AFTER SETTING UP index.js file
 function App() {
