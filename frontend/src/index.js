@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import BooksContext, { Provider } from "./context/books";
+import BooksContext, { Provider } from "./Context/books";
 import "./index.css";
 
 

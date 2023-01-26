@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Users from "./Components/Products/Users";
-import Profile from "./Components/Products/Profile";
+import Profile from "./Pages/ProfilePage/ProfilePage";
 import HomePage from "./Pages/HomePage/Homepage";
+import AboutPage from "./Pages/AboutPage/AboutPage";
+import Users from "./Pages/UsersPage/UsersPage";
 
 // CREATE THIS FILE AFTER SETTING UP index.js file
 function App() {
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/users:userId">
             <Profile />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
           </Route>
           <Route>
             <h1>404: wrong page goofy</h1>
