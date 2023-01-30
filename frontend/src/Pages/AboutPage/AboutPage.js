@@ -1,7 +1,8 @@
+import React, { useState } from "react";
 import Accordion from "../../Components/Products/Accordion/Accordion";
+import Dropdown from "../../Components/Products/Dropdown/Dropdown";
 
 function AboutPage() {
-
   const items = [
     {
       label: "What is The Owl?",
@@ -19,9 +20,26 @@ function AboutPage() {
     },
   ];
 
+  const dropdownOptions = [
+    { label: "Low-Income", value: "0-80k" },
+    { label: "Middle-Income", value: "80k-200k" },
+    { label: "High-Income", value: ">200k" },
+  ];
+
+  const [selected, setSelected] = useState();
+
+  const handleSelect = (option) => {
+    setSelected(option);
+  };
+
   return (
     <div>
-      <Accordion items={items}/>
+      <Dropdown
+        options={dropdownOptions}
+        value={selected}
+        onChange={handleSelect}
+      />
+      <Accordion items={items} />
     </div>
   );
 }
