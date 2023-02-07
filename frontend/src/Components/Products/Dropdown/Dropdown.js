@@ -11,7 +11,7 @@ function Dropdown({ options, value, onChange }) {
     // ----- FUNCTION THAT WILL EXECUTE WHEN EVENT LISTENER HEARS EVENT (in this case, a click) ----- vv//
     const handler = (event) => {
       if (!divEl.current) return;
-      
+
       if (!divEl.current.contains(event.target)) {
         setShowDropdown(false);
       }
@@ -34,6 +34,7 @@ function Dropdown({ options, value, onChange }) {
     setShowDropdown((currentShowDropdown) => !currentShowDropdown);
   };
 
+  // when we click an option from the dropdown, you'll stop showing the dropdown, 
   const handleOptionClick = (option) => {
     setShowDropdown(false);
     onChange(option);
