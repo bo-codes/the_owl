@@ -1,33 +1,16 @@
-import {createSlice, configureStore} from '@reduxjs/toolkit'
-
-
-const postsSlice = createSlice({
-    name: 'post',
-    initialState: {},
-    reducers: {
-        addPost(state, action) {
-            // key into the action to get our payload, and get our post we are passing through there
-            state[action.payload.post.id] = action.payload.post
-        },
-        removePost(state, action) {
-            delete state[action.postId]
-        }
-    }
-})
+import { configureStore } from "@reduxjs/toolkit";
+import { postsReducer, addPost, removePost } from "./Slices/postsSlice";
+import { usersReducer, addUser, removeUser } from "./Slices/usersSlice";
+import { reset } from "./actions";
 
 const store = configureStore({
-    reducer: {
-        posts: postsSlice.reducer
-    }
-})
+  reducer: {
+    posts: postsReducer,
+    users: usersReducer,
+  },
+});
 
-// store.dispatch({
-//     type: 'post/addPost',
-//     payload: 'New Post!!!'
-// })
-
-// store.dispatch(postsSlice.actions.addPost({id: 1, post: {content: 'New Post', createdAt: 'today', userId: '1'}}))
-
+export { store, addPost, addUser, removePost, removeUser, reset };
 
 // import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
@@ -52,5 +35,3 @@ const store = configureStore({
 // };
 
 // export default configureStore;
-
-export { store };

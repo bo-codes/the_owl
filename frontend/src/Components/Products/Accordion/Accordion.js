@@ -1,7 +1,12 @@
 import { useState } from "react";
 import './Accordion.css'
+// import { addPost } from "../../../Store";
+// import { useDispatch, useSelector } from "react-redux";
+
 
 function Accordion({ items }) {
+  // const dispatch = useDispatch();
+
   const [expandedIndex, setExpandedIndex] = useState("");
 
   const handleClick = (currIndex) => {
