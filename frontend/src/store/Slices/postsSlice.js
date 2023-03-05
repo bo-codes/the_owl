@@ -21,6 +21,7 @@ const postsSlice = createSlice({
     // builder.addCase('movie/reset', (state, action) => {
     //     return [];
     // })
+    // NOTE
   },
 });
 
