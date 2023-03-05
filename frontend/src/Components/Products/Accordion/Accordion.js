@@ -5,6 +5,7 @@ import './Accordion.css'
 
 
 function Accordion({ items }) {
+  // importing the dispatch function from the store
   // const dispatch = useDispatch();
 
   const [expandedIndex, setExpandedIndex] = useState("");
